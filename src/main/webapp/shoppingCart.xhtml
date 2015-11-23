@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>e-Shopping</title>
+        <link rel="stylesheet" type="text/css" href="css/styleCart.css" media="screen" />
+    </h:head>
+
+    <h:body>
+        <div id="main_container">
+            <div class="center_content">
+                <div id="header">
+                    <div id="logo"><a href="index.xhtml"><img src="images/generic-logo-hi.png" style="height: 6em;" alt="" title="" border="0" /></a></div>
+
+                    <div class="top_text">
+                        <p>“El verdadero progreso es el que pone la tecnología al alcance de todos"</p>
+                        <a href="#" class="testimonial">-Henry Ford (1844-1929)-</a>
+                    </div>
+
+                </div>
+
+
+                <div class="main_content">
+                    <h:form>
+                        <div class="main_content_top"></div>
+                        <div id="boxes_content">
+                            <div id="boxes_content">
+                                <p:commandButton value="Seguir comprando" action="#{shoppingCartTblController.goShoppingList()}" icon="ui-icon-search"
+                                                 update="@form">
+                                </p:commandButton>
+                            </div>
+
+                            <p:carousel value="#{shoppingCartTblController.shoppingCarts}" headerText="Carrito de compras" var="prod" itemStyle="text-align:center" responsive="true">
+                                <p:panelGrid columns="2" style="width:100%;height: 200px; margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+                                    <f:facet name="header">
+                                        <p:graphicImage style="height: 48px; width: 48px;" name="products/#{prod.idproduct}.png"/> 
+                                    </f:facet>
+
+                                    <h:outputText value="Id:" />
+                                    <h:outputText value="#{prod.idproduct}" />
+
+                                    <h:outputText value="Producto" />
+                                    <h:outputText value="#{prod.productname}" />
+
+                                    <h:outputText value="Precio" />
+                                    <h:outputText value="$#{prod.productprice}" />
+
+                                    <f:facet name="footer">
+                                        <p:commandButton value="Borrar" action="#{shoppingCartTblController.deleteSelectedProduct()}" icon="ui-icon-search"
+                                                         update="@form">
+                                            <f:setPropertyActionListener value="#{prod}" target="#{shoppingCartTblController.selectedProduct}" />
+                                        </p:commandButton>
+                                    </f:facet>
+                                </p:panelGrid>
+
+                                <f:facet name="footer">
+                                    Tiene: #{fn:length(shoppingCartTblController.shoppingCarts)} productos seleccionados.
+                                </f:facet>
+                            </p:carousel>
+
+                        </div><!--end of boxes content-->
+
+                        <div id="boxes_content">
+                            <p:commandButton value="Pagar" action="#{shoppingCartTblController.payShoppingCart()}" icon="ui-icon-search"
+                                             update="@form" disabled="#{fn:length(shoppingCartTblController.shoppingCarts) == 0}">
+                            </p:commandButton>
+                        </div>
+                        <p:messages id="messages" showDetail="false" autoUpdate="true" />
+                    </h:form>
+                </div><!--end of main content-->
+
+
+                <div id="footer">
+                    <div class="copyright">
+                        <a href="http://csstemplatesmarket.com"><img src="images/csstemplatesmarket.gif" border="0" alt="" title="" /></a>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </h:body>
+</html>

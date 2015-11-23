@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="CarritoComprasUnit" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>co.edu.unbosque.swii.shopping.model.TblshoppingCart</class>
+    <class>co.edu.unbosque.swii.shopping.model.TblProduct</class>
+    <class>co.edu.unbosque.swii.shopping.model.TblUser</class>
+    <class>co.edu.unbosque.swii.shopping.model.TblProducts</class>
+    <class>co.edu.unbosque.swii.shopping.model.TblproducCart</class>
+    <class>co.edu.unbosque.swii.shopping.model.TblHilos</class>
+    <class>co.edu.unbosque.swii.shopping.model.TblProductcart</class>
+    <class>co.edu.unbosque.swii.shopping.model.TblShoppingcart</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://aretico.com:5432/software_2?searchpath=grupo6"/>
+      <property name="javax.persistence.jdbc.user" value="grupo6_5"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="YckGwYC8r3"/>
+    </properties>
+  </persistence-unit>
+</persistence>
